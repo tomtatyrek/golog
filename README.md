@@ -7,6 +7,10 @@ Golog provides simple logging functionality and was developed for usage in my pe
 
 The golog Go package offers a lightweight and easy-to-use logging interface for Go applications. It supports logging messages at different levels (such as Info, Warning, Error), can be configured to output logs to various destinations, such as standard output or files, and gives the user the ability to change timestamp formats.
 
+## Concurrency
+
+From my testing Golog should be safe for concurrent use as it mainly depends on os.File.WriteString() function, which according to [its documentation] is ok to be used concurrently, as long as the system limit for writing to files, should be quite hign, isn't exceeded.
+
 ## Examples
 
 ### Typical usage:
@@ -133,3 +137,4 @@ This will write log messages to both standard output and the specified log file.
 
 [this article]: https://sematext.com/blog/logging-levels/
 [time package]: https://pkg.go.dev/time#Time.Format
+[its documentation]: https://pkg.go.dev/os#hdr-Concurrency
