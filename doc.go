@@ -6,6 +6,13 @@ It supports logging messages at different levels (such as Info, Warning, Error),
 configured to output logs to various destinations, such as standard output or files, and gives
 the user the ability to change timestamp formats.
 
+# Concurrency
+
+From my testing Golog should be safe for concurrent use as it mainly depends on
+[os.File.WriteString()] function, which according to [its documentation] is ok
+to be used concurrently, as long as the system limit for writing to files,
+should be quite hign, isn't exceeded.
+
 # Examples
 
 Typical usage:
@@ -107,17 +114,23 @@ of [os.File] objects to specify where log messages should be written.
 
 Example:
 
+	// Creates aand opens a new writalble file
 	logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
 	}
+
+	// Creates a logger, which logs to os.Stdout and the created file
 	files := []*os.File{os.Stdout, logFile}
 	logger := golog.NewLogger(files, golog.NewClock(time.StampMilli), golog.INFO|golog.ERROR)
+
+	// Closes the files
 	defer logger.Close()
 
 This will write log messages to both standard output and the specified log file. You can add as many
 files as needed to the slice. Make sure to use the Close() method afterwards.
 
 [this article]: https://sematext.com/blog/logging-levels/
+[its documentation]: https://pkg.go.dev/os#hdr-Concurrency
 */
 package golog

@@ -110,8 +110,7 @@ This will format timestamps according to the layouts provided. You can use any v
 
 ## Logging to different files
 
-Golog supports logging to multiple files or destinations. When creating a logger, you can pass a slice
-of os.File objects to specify where log messages should be written.
+Golog supports logging to multiple files or destinations. When creating a logger, you can pass a slice of os.File objects to specify where log messages should be written.
 
 **Example:**
 
@@ -130,8 +129,7 @@ logger := golog.NewLogger(files, golog.NewClock(time.StampMilli), golog.INFO|gol
 defer logger.Close()
 ```
 
-This will write log messages to both standard output and the specified log file. You can add as many
-files as needed to the slice. Make sure to use the Close() method afterwards.
+This will write log messages to both standard output and the specified log file. You can add as many files as needed to the slice. Make sure to use the Close() method afterwards.
 
 [this article]: https://sematext.com/blog/logging-levels/
 [time package]: https://pkg.go.dev/time#Time.Format
