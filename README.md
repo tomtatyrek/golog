@@ -1,4 +1,8 @@
 # Golog
+
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
+
 Golog provides simple logging functionality and was developed for usage in my personal GO projects.
 
 The golog Go package offers a lightweight and easy-to-use logging interface for Go applications. It supports logging messages at different levels (such as Info, Warning, Error), can be configured to output logs to various destinations, such as standard output or files, and gives the user the ability to change timestamp formats.
@@ -84,12 +88,20 @@ One of the ways to customize a golog logger is changing which levels of logging 
 
 For more info about when should each of these levels be used refer to [this article]
 
+**Example:**
+```go
+// Creates a new custom LogLevel, combining FATAL, ERROR and INFO levels and passes it to a new logger
+var loggingLevels LogLevel = golog.FATAL | golog.ERROR | golog.INFO
+logger := golog.NewLogger([]*os.File{os.Stdout}, golog.NewDefaultClock(), loggingLevels)
+```
+
 ## Customising time formats
 
 Golog allows you to customise the timestamp format for your log messages. You can use the NewClock function to specify one or more layouts, either using Go's [time package] constants or your own custom format strings.
 
-Example:
+**Example:**
 ```go
+// Creates a new clock with custom time formatting and a new logger using that clock
 clock := golog.NewClock("2006-01-02 15:04:05", time.RFC3339)
 logger := golog.NewLogger([]*os.File{os.Stdout}, clock, golog.INFO|golog.ERROR)
 ```
@@ -101,15 +113,20 @@ This will format timestamps according to the layouts provided. You can use any v
 Golog supports logging to multiple files or destinations. When creating a logger, you can pass a slice
 of os.File objects to specify where log messages should be written.
 
-Example:
+**Example:**
 
 ```go
+// Creates aand opens a new writalble file
 logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 if err != nil {
     panic(err)
 }
+
+// Creates a logger, which logs to os.Stdout and the created file
 files := []*os.File{os.Stdout, logFile}
 logger := golog.NewLogger(files, golog.NewClock(time.StampMilli), golog.INFO|golog.ERROR)
+
+// Closes the files
 defer logger.Close()
 ```
 
