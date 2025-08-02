@@ -7,6 +7,9 @@ Golog provides simple logging functionality and was developed for usage in my pe
 
 The golog Go package offers a lightweight and easy-to-use logging interface for Go applications. It supports logging messages at different levels (such as Info, Warning, Error), can be configured to output logs to various destinations, such as standard output or files, and gives the user the ability to change timestamp formats.
 
+ [![Go Reference](https://pkg.go.dev/badge/github.com/tomtatyrek/golog.svg)](https://pkg.go.dev/github.com/tomtatyrek/golog)
+
+
 ## Concurrency
 
 From my testing Golog should be safe for concurrent use as it mainly depends on os.File.WriteString() function, which according to [its documentation] is ok to be used concurrently, as long as the system limit for writing to files, should be quite hign, isn't exceeded.
@@ -78,7 +81,10 @@ This will result in the following output:
 
 [21-25-54] [ERROR] This message will be shown
 ```
-# Logging levels
+
+Feel free to explore more examples in the [examples directory](./examples/)
+
+## Logging levels
 
 One of the ways to customize a golog logger is changing which levels of logging it shows and which it doesn't. Golog supports these 6 logging levels which are represented by a uint8 number which, when written in binary, has only one of its bits occupied by 1 and the others are zeros. They can, therefore, be combined using the bitwise or (|) operator.
 |Logging level | Binary representation |

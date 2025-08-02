@@ -19,6 +19,8 @@ type Logger struct {
 //
 // The files have to already be open. It is to be followed by a defer call to
 // [Close()] in order to close all of the Logger's files.
+//
+// [Close()]: https://pkg.go.dev/github.com/tomtatyrek/golog#Logger.Close
 func NewLogger(files []*os.File, clock *Clock, allowedLogLevels LogLevel) *Logger {
 	logger := Logger{files, clock, allowedLogLevels}
 	// Default starting message

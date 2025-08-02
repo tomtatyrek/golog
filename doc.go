@@ -97,7 +97,7 @@ For more info about when should each of these levels be used refer to [this arti
 
 # Customising time formats
 
-Golog allows you to customise the timestamp format for your log messages. You can use the NewClock
+Golog allows you to customise the timestamp format for your log messages. You can use the [NewClock()]
 function to specify one or more layouts, either using Go's time package constants or your own custom format strings.
 
 Example:
@@ -128,9 +128,12 @@ Example:
 	defer logger.Close()
 
 This will write log messages to both standard output and the specified log file. You can add as many
-files as needed to the slice. Make sure to use the Close() method afterwards.
+files as needed to the slice. Make sure to use the [Logger.Close()] method afterwards.
 
 [this article]: https://sematext.com/blog/logging-levels/
 [its documentation]: https://pkg.go.dev/os#hdr-Concurrency
+[Logger.Close()]: https://pkg.go.dev/github.com/tomtatyrek/golog#Logger.Close
+[NewClock()]: https://pkg.go.dev/github.com/tomtatyrek/golog#NewClock
+[os.File.WriteString()]: https://pkg.go.dev/os#File.WriteString
 */
 package golog

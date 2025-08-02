@@ -9,13 +9,6 @@ type LogLevel uint8
 // bits occupied by 1 and the others are zero. They can, therefore,
 // be combined using the bitwise or (|) operator.
 //
-//  1. FATAL = 0b_00000001
-//  2. ERROR = 0b_00000010
-//  3. WARN  = 0b_00000100
-//  4. INFO  = 0b_00001000
-//  5. DEBUG = 0b_00010000
-//  6. TRACE = 0b_00100000
-//
 // For more info about when should each of these levels be used refer
 // to [this article]
 //
@@ -42,8 +35,14 @@ var logLevelNames = map[LogLevel]string{
 	// RES2:  "RES2",
 }
 
+// DefaultLogLevels logs everything except for TRACE messages
 const DefaultLogLevels LogLevel = FATAL | ERROR | WARN | INFO | DEBUG
+
+// AllLogLevels logs everything
 const AllLogLevels LogLevel = FATAL | ERROR | WARN | INFO | DEBUG | TRACE
+
+// ImportantLogLevels logs only FATAL, ERROR and INFO messages
+const ImportantLogLevels LogLevel = FATAL | ERROR | INFO
 
 func (ll LogLevel) isAllowed(allowed LogLevel) bool {
 	return (ll & (allowed ^ 0b_11111111)) == 0
