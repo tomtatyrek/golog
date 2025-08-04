@@ -13,7 +13,7 @@ func main() {
 	// predefined in time package
 	clock := golog.NewClock("15-04-05", time.RFC1123)
 
-	// Defines a slice of files to which the log will be writen.
+	// Defines a slice of files to which the log will be written.
 	// (In this case only one file is provided.)
 	files := []*os.File{os.Stdout}
 

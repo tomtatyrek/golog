@@ -1,14 +1,17 @@
 # Golog
 
-![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
-[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
-
-Golog provides simple logging functionality and was developed for usage in my personal GO projects.
+ [![Go Reference](https://pkg.go.dev/badge/github.com/tomtatyrek/golog.svg)](https://pkg.go.dev/github.com/tomtatyrek/golog)
+ [![Go Report Card](https://goreportcard.com/badge/github.com/tomtatyrek/golog)](https://goreportcard.com/report/github.com/tomtatyrek/golog)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The golog Go package offers a lightweight and easy-to-use logging interface for Go applications. It supports logging messages at different levels (such as Info, Warning, Error), can be configured to output logs to various destinations, such as standard output or files, and gives the user the ability to change timestamp formats.
 
- [![Go Reference](https://pkg.go.dev/badge/github.com/tomtatyrek/golog.svg)](https://pkg.go.dev/github.com/tomtatyrek/golog)
+## Installing
+To install Golog, just run the `go get` command:
 
+```
+go get github.com/tomtatyrek/golog
+```
 
 ## Concurrency
 
